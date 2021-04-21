@@ -1,0 +1,58 @@
+// Breakpoint
+$lg: 1199.98px;
+$md: 991.98px;
+$sm: 767.98px;
+$xs: 575.98px;
+$us: 415.98px;
+
+$font-stack: "Roboto", arial;
+
+$fonts: (
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  bold: 700,
+  black: 900,
+);
+
+$sizeText: (
+  28: 1.75rem,
+  22: 1.375rem,
+  18: 1.125rem,
+  16: 1rem,
+  14: 0.875rem,
+  12: 0.75rem,
+  10: 0.625rem,
+  8: 0.5rem,
+);
+
+$colors: (
+  consalud-primary-90: #00afaa,
+  consalud-primary-70: #76bcc1,
+  consalud-primary-50: #aad4d7,
+  consalud-primary-30: #c7ebeb,
+  consalud-primary-10: #e6f5f5,
+  consalud-secondary-90: #e9577a,
+  consalud-secondary-70: #e87b95,
+  consalud-secondary-50: #ebaebd,
+  consalud-secondary-30: #f4d9e0,
+  consalud-secondary-10: #f9e9ed,
+  consalud-grey-90: #515050,
+  consalud-grey-70: #747474,
+  consalud-grey-50: #ababab,
+  consalud-grey-30: #cbc9c9,
+  consalud-grey-10: #ececec,
+  consalud-warning: #fbc747,
+  consalud-white: #ffff,
+);
+
+$base-color: #ddd;
+$shine-color: #e8e8e8;
+$animation-duration: 1.6s;
+
+$colorStatus: (
+  status-green: #54cb97,
+  status-yellow: #ffc16b,
+  status-red: #a73833,
+);

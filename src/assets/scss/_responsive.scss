@@ -1,0 +1,161 @@
+//Cantidad de grillas
+$grid-cols: 12;
+$i: 0;
+
+//Distancia entre columnas
+$gutter: 0.625rem;
+
+//Breakpoint
+
+$lg: 1199.98px;
+$md: 991.98px;
+$sm: 767.98px;
+$xs: 575.98px;
+$us: 415.98px;
+
+//Clases responsive
+$col: "";
+@mixin respond-to($media) {
+  @if $media == lg {
+    $col: "";
+    @include contentGrid($col);
+  } @else if $media == desktop {
+    @media (max-width: $lg) {
+      $col: "_pc";
+      @include contentGrid($col);
+    }
+  } @else if $media == md {
+    @media (max-width: $md) {
+      $col: "_md";
+      @include contentGrid($col);
+    }
+  } @else if $media == sm {
+    @media (max-width: $sm) {
+      $col: "_sm";
+      @include contentGrid($col);
+    }
+  } @else if $media == xs {
+    @media (max-width: $xs) {
+      $col: "_xs";
+      @include contentGrid($col);
+    }
+  } @else if $media == us {
+    @media (max-width: $us) {
+      $col: "_us";
+      @include contentGrid($col);
+    }
+  }
+}
+
+// Tipos de justify content
+$between: space-between;
+$around: space-around;
+$center: center;
+$right: flex-end;
+$left: left;
+$justifyContent: (
+  between: $between,
+  around: $around,
+  center: $center,
+  right: $right,
+  left: $left,
+);
+
+//Menejo de offset right y left
+$right: "_right";
+$left: "_left";
+
+$margin-map: (
+  right: $right,
+  left: $left,
+);
+
+@mixin decimalMargin() {
+  @for $i from 0 through $grid-cols {
+    @each $key, $value in $margin-map {
+      &#{$value}_#{$i} {
+        @if $i == $grid-cols {
+          margin-#{$key}: 100%;
+        } @else if $i != $grid-cols and $i != 0 {
+          margin-#{$key}: (100 / ($grid-cols / $i)) * 1%;
+        } @else if $i == 0 {
+          margin-#{$key}: 0;
+        }
+      }
+    }
+  }
+}
+@function widthCol($columns, $total) {
+  @return unquote((100 / $total) * $columns + "%");
+}
+
+@mixin contentGrid($col) {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &.row#{$col} {
+    @each $key, $value in $justifyContent {
+      &--#{$key} {
+        justify-content: $value;
+      }
+    }
+  }
+  &.row_align {
+    @each $key, $value in $justifyContent {
+      &--#{$key} {
+        align-items: $value;
+      }
+    }
+  }
+  &.row#{$col}--block {
+    display: block;
+  }
+  &.row#{$col}--reverse {
+    flex-direction: row-reverse;
+  }
+  &.row--padding {
+    > [class*="col_"] {
+      padding-right: $gutter;
+      padding-left: $gutter;
+    }
+  }
+
+  @for $i from 0 through $grid-cols {
+    .col#{$col}_#{$i} {
+      flex: 0 0 widthCol($i, $grid-cols);
+      max-width: widthCol($i, $grid-cols);
+    }
+  }
+
+  .col_offset#{$col} {
+    @include decimalMargin;
+  }
+  .col_hidden#{$col} {
+    display: none;
+  }
+  .col_show#{$col} {
+    display: flex;
+  }
+} //container-row
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  &.container--full {
+    height: calc(100vh - 59px);
+  }
+  &-row {
+    @include respond-to(lg);
+    @include respond-to(desktop);
+    @include respond-to(md);
+    @include respond-to(sm);
+    @include respond-to(xs);
+
+    > [class*="col_"] {
+      position: relative;
+      width: 100%;
+    }
+  }
+} //container
