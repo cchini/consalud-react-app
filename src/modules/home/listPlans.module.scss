@@ -1,0 +1,12 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixin.scss";
+
+.list_content {
+  margin: 3.75rem 1.25rem;
+
+  .itemPlan {
+    margin: 1rem 0;
+    padding: 20px 60px;
+    background: map-get($colors, consalud-grey-10);
+  }
+}
