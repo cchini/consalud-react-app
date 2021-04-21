@@ -1,0 +1,30 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixin.scss";
+
+.cns_content {
+  margin: 3.75rem 1.25rem;
+  .cns_form {
+    background: map-get($colors, consalud-grey-30);
+    padding: 20px;
+    &__input {
+      color: map-get($colors, consalud-grey-50);
+      margin: 20px 10px;
+      border: none;
+      height: 40px;
+      padding: 10px;
+      &::placeholder {
+        color: map-get($colors, consalud-grey-50);
+      }
+    }
+    &__button {
+      background-color: map-get($colors, consalud-primary-90);
+      margin: 20px 0;
+      border: none;
+      height: 50px;
+      padding: 10px;
+      color: map-get($colors, consalud-white);
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+  }
+}
